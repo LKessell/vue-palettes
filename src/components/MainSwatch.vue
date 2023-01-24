@@ -1,5 +1,7 @@
 <script setup lang="ts">
-defineProps<{ hex: string }>();
+import { ref } from "vue";
+
+const hex = ref("#4c94b7");
 </script>
 
 <template>
