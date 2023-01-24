@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import MainSwatch from "./components/MainSwatch.vue";
+import MainPalette from "./components/MainPalette.vue";
 </script>
 
 <template>
@@ -8,7 +8,7 @@ import MainSwatch from "./components/MainSwatch.vue";
   </header>
 
   <main>
-    <MainSwatch hex="#4c94b7" />
+    <MainPalette />
   </main>
 </template>
 
