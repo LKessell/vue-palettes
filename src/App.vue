@@ -4,7 +4,7 @@ import MainPalette from "./components/MainPalette.vue";
 
 <template>
   <header>
-    <h1>Vue Paletttes</h1>
+    <h1 class="title">Vue Paletttes</h1>
   </header>
 
   <main>
@@ -14,8 +14,12 @@ import MainPalette from "./components/MainPalette.vue";
 
 <style scoped>
 header {
-  line-height: 1.5;
+  line-height: 2;
   text-align: center;
+}
+
+.title {
+  font-weight: bold;
 }
 
 main {

@@ -15,7 +15,6 @@ const hex = ref("#4c94b7");
 .swatch-wrapper {
   display: inline-block;
   padding: 2rem;
-  width: 200px;
 }
 .swatch {
   height: 100px;
