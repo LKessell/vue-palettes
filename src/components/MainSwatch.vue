@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref } from "vue";
+import IconLocked from "./icons/Locked.vue";
 
 const hex = ref("#4c94b7");
 </script>
@@ -8,6 +9,7 @@ const hex = ref("#4c94b7");
   <div class="swatch-wrapper">
     <div class="swatch" v-bind:style="{ backgroundColor: hex }"></div>
     <p>{{ hex }}</p>
+    <IconLocked />
   </div>
 </template>
 
