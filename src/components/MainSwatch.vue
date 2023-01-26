@@ -10,9 +10,11 @@ defineProps<{
 <template>
   <div class="swatch-wrapper">
     <div class="swatch" v-bind:style="{ backgroundColor: color.hex }"></div>
-    <p>{{ color.hex }}</p>
-    <IconLocked />
-    <IconUnlocked />
+    <div class="color-details">
+      <p>{{ color.hex }}</p>
+      <IconLocked v-if="color.isLocked" />
+      <IconUnlocked v-else />
+    </div>
   </div>
 </template>
 
@@ -25,5 +27,17 @@ defineProps<{
   height: 100px;
   width: 100px;
   border: 1px solid #000000;
+}
+
+.color-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 0.5rem;
+}
+
+svg {
+  width: 2rem;
+  height: 2rem;
 }
 </style>
