@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 import MainSwatch from "./MainSwatch.vue";
 
 const palette = ref([
@@ -12,6 +12,18 @@ const palette = ref([
     hex: "BCDE9D",
   },
 ]);
+
+async function fetchPalette() {
+  const response = await fetch(
+    "https://www.thecolorapi.com/scheme?hex=24B1E0&mode=triad&count=5"
+  );
+  const data = await response.json();
+  console.log(data.colors);
+}
+
+onMounted(() => {
+  fetchPalette();
+});
 </script>
 
 <template>
