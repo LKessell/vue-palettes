@@ -8,24 +8,15 @@ interface IColor {
   };
 }
 
-const palette = ref([
-  {
-    isLocked: false,
-    hex: "4c94b7",
-  },
-  {
-    isLocked: false,
-    hex: "BCDE9D",
-  },
-]);
+const palette = ref<Array<{ isLocked: boolean; hex: string }>>([]);
 
 async function fetchPalette() {
   const response = await fetch(
     "https://www.thecolorapi.com/scheme?hex=24B1E0&mode=triad&count=5"
   );
   const data = await response.json();
-  console.log(data.colors);
-  return data;
+
+  palette.value = data.colors ? formatPalette(data) : [];
 }
 
 function formatPalette(data: { colors: Array<IColor> }) {
