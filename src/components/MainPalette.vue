@@ -2,6 +2,12 @@
 import { onMounted, ref } from "vue";
 import MainSwatch from "./MainSwatch.vue";
 
+interface IColor {
+  hex: {
+    clean: string;
+  };
+}
+
 const palette = ref([
   {
     isLocked: false,
@@ -19,6 +25,16 @@ async function fetchPalette() {
   );
   const data = await response.json();
   console.log(data.colors);
+  return data;
+}
+
+function formatPalette(data: { colors: Array<IColor> }) {
+  return data.colors.map((color: IColor) => {
+    return {
+      isLocked: false,
+      hex: color.hex.clean,
+    };
+  });
 }
 
 onMounted(() => {
