@@ -37,6 +37,21 @@ function getRandomHex() {
   return color;
 }
 
+function getRandomMode() {
+  const modes = [
+    "monochrome",
+    "monochrome-dark",
+    "monochrome-light",
+    "analogic",
+    "complement",
+    "analogic-complement",
+    "triad",
+    "quad",
+  ];
+
+  return modes[Math.floor(Math.random() * 8)];
+}
+
 onMounted(() => {
   fetchPalette(getRandomHex());
 });
