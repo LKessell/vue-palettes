@@ -10,9 +10,9 @@ interface IColor {
 
 const palette = ref<Array<{ isLocked: boolean; hex: string }>>([]);
 
-async function fetchPalette(hex: string) {
+async function fetchPalette(hex: string, mode: string) {
   const response = await fetch(
-    `https://www.thecolorapi.com/scheme?hex=${hex}&mode=triad&count=5`
+    `https://www.thecolorapi.com/scheme?hex=${hex}&mode=${mode}&count=5`
   );
   const data = await response.json();
 
@@ -53,7 +53,9 @@ function getRandomMode() {
 }
 
 onMounted(() => {
-  fetchPalette(getRandomHex());
+  const hex = getRandomHex();
+  const mode = getRandomMode();
+  fetchPalette(hex, mode);
 });
 </script>
 
