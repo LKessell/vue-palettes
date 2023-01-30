@@ -4,7 +4,7 @@ import MainPalette from "./components/MainPalette.vue";
 
 <template>
   <header>
-    <h1 class="title">Vue Paletttes</h1>
+    <h1 class="title">Vue-tiful Palettes</h1>
   </header>
 
   <main>
