@@ -77,11 +77,27 @@ onMounted(() => {
         :key="index + color.hex"
       />
     </div>
-    <button @click="handleRandomizeClick">Randomize</button>
+    <button class="button" @click="handleRandomizeClick">Randomize</button>
   </section>
 </template>
 
 <style scoped>
+.button {
+  cursor: pointer;
+  height: 4rem;
+  width: 10rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: large;
+  font-weight: bold;
+  transition: 0.5s;
+}
+
+.button:hover {
+  background-color: var(--color-background);
+  color: var(--color-text);
+  box-shadow: 0 0 0 2px var(--color-text);
+}
 .main-palette {
   display: flex;
   flex-direction: column;
