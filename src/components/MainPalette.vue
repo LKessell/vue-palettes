@@ -61,16 +61,24 @@ onMounted(() => {
 
 <template>
   <section class="main-palette">
-    <MainSwatch
-      v-for="(color, index) in palette"
-      :color="color"
-      :key="index + color.hex"
-    />
+    <div class="palette-wrapper">
+      <MainSwatch
+        v-for="(color, index) in palette"
+        :color="color"
+        :key="index + color.hex"
+      />
+    </div>
+    <button>Randomize</button>
   </section>
 </template>
 
 <style scoped>
 .main-palette {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.palette-wrapper {
   display: flex;
   justify-content: center;
 }
