@@ -52,10 +52,19 @@ function getRandomMode() {
   return modes[Math.floor(Math.random() * 8)];
 }
 
-onMounted(() => {
+function getRandomizedPalette() {
   const hex = getRandomHex();
   const mode = getRandomMode();
   fetchPalette(hex, mode);
+}
+
+function handleRandomizeClick(e: Event) {
+  e.preventDefault();
+  getRandomizedPalette();
+}
+
+onMounted(() => {
+  getRandomizedPalette();
 });
 </script>
 
@@ -68,7 +77,7 @@ onMounted(() => {
         :key="index + color.hex"
       />
     </div>
-    <button>Randomize</button>
+    <button @click="handleRandomizeClick">Randomize</button>
   </section>
 </template>
 
