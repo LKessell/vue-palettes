@@ -14,7 +14,7 @@ import MainPalette from "./components/MainPalette.vue";
 
 <style scoped>
 header {
-  line-height: 2;
+  line-height: 3;
   text-align: center;
 }
 
