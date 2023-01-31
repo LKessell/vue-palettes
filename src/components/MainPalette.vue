@@ -107,4 +107,11 @@ onMounted(() => {
   display: flex;
   justify-content: center;
 }
+
+@media (max-width: 1024px) {
+  .palette-wrapper {
+    flex-direction: column;
+    padding-bottom: 2rem;
+  }
+}
 </style>
