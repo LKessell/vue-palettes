@@ -35,12 +35,28 @@ defineProps<{
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  padding-top: 0.5rem;
+  padding: 0.5rem 0 0 0;
   text-transform: uppercase;
 }
 
 svg {
   width: 2rem;
   height: 2rem;
+}
+
+@media (max-width: 1024px) {
+  .swatch-wrapper {
+    display: flex;
+    padding: 0;
+    justify-content: space-between;
+  }
+
+  .swatch {
+    height: 7rem;
+  }
+
+  .color-details {
+    padding: 0 0 0 0.5rem;
+  }
 }
 </style>
