@@ -15,7 +15,7 @@ defineProps<{
     ></div>
     <div class="color-details">
       <p>#{{ color.hex }}</p>
-      <button v-bind:id="color.id">
+      <button class="lock-toggle" v-bind:id="color.id">
         <IconLocked v-if="color.isLocked" />
         <IconUnlocked v-else />
       </button>
@@ -44,6 +44,14 @@ defineProps<{
 svg {
   width: 2rem;
   height: 2rem;
+}
+
+.lock-toggle {
+  background-color: transparent;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  padding: 0;
 }
 
 @media (max-width: 1024px) {
