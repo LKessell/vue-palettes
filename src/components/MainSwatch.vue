@@ -3,7 +3,7 @@ import IconLocked from "./icons/Locked.vue";
 import IconUnlocked from "./icons/Unlocked.vue";
 
 defineProps<{
-  color: { isLocked: boolean; hex: string };
+  color: { isLocked: boolean; hex: string; id: string };
 }>();
 </script>
 
@@ -15,8 +15,10 @@ defineProps<{
     ></div>
     <div class="color-details">
       <p>#{{ color.hex }}</p>
-      <IconLocked v-if="color.isLocked" />
-      <IconUnlocked v-else />
+      <button v-bind:id="color.id">
+        <IconLocked v-if="color.isLocked" />
+        <IconUnlocked v-else />
+      </button>
     </div>
   </div>
 </template>
