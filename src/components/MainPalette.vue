@@ -8,7 +8,7 @@ interface IColor {
   };
 }
 
-const palette = ref<Array<{ isLocked: boolean; hex: string }>>([]);
+const palette = ref<Array<{ isLocked: boolean; hex: string; id: string }>>([]);
 
 async function fetchPalette(hex: string, mode: string) {
   const response = await fetch(
@@ -24,6 +24,7 @@ function formatPalette(data: { colors: Array<IColor> }) {
     return {
       isLocked: false,
       hex: color.hex.clean,
+      id: Math.random().toString(36).substring(2, 8),
     };
   });
 }
