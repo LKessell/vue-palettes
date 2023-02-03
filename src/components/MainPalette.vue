@@ -64,6 +64,10 @@ function handleRandomizeClick(e: Event) {
   getRandomizedPalette();
 }
 
+function toggleLock(id: string) {
+  console.log(id);
+}
+
 onMounted(() => {
   getRandomizedPalette();
 });
@@ -76,6 +80,7 @@ onMounted(() => {
         v-for="(color, index) in palette"
         :color="color"
         :key="index + color.hex"
+        @toggle-lock="toggleLock"
       />
     </div>
     <button class="button" @click="handleRandomizeClick">Randomize</button>
