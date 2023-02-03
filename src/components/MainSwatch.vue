@@ -5,6 +5,13 @@ import IconUnlocked from "./icons/Unlocked.vue";
 defineProps<{
   color: { isLocked: boolean; hex: string; id: string };
 }>();
+
+const emit = defineEmits(["toggleLock"]);
+
+const handleToggle = (event: Event) => {
+  const button = event.currentTarget as HTMLButtonElement;
+  emit("toggleLock", button?.id);
+};
 </script>
 
 <template>
@@ -15,7 +22,7 @@ defineProps<{
     ></div>
     <div class="color-details">
       <p>#{{ color.hex }}</p>
-      <button class="lock-toggle" v-bind:id="color.id">
+      <button class="lock-toggle" v-bind:id="color.id" @click="handleToggle">
         <IconLocked v-if="color.isLocked" />
         <IconUnlocked v-else />
       </button>
