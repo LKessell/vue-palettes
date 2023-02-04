@@ -71,6 +71,14 @@ function toggleLock(id: string) {
   color.isLocked = !color.isLocked;
 }
 
+function updatePalette(
+  data: Array<{ isLocked: boolean; hex: string; id: string }>
+) {
+  palette.value.forEach((color, index) => {
+    if (!color.isLocked) palette.value[index] = data[index];
+  });
+}
+
 onMounted(() => {
   getRandomizedPalette();
 });
