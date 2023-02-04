@@ -65,7 +65,10 @@ function handleRandomizeClick(e: Event) {
 }
 
 function toggleLock(id: string) {
-  console.log(id);
+  const index = palette.value.findIndex((color) => color.id === id);
+  const color = palette.value[index];
+
+  color.isLocked = !color.isLocked;
 }
 
 onMounted(() => {
