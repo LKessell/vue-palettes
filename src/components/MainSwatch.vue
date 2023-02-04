@@ -22,7 +22,12 @@ const handleToggle = (event: Event) => {
     ></div>
     <div class="color-details">
       <p>#{{ color.hex }}</p>
-      <button class="lock-toggle" v-bind:id="color.id" @click="handleToggle">
+      <button
+        v-bind:aria-label="color.isLocked ? 'Unlock Color' : 'Lock Color'"
+        class="lock-toggle"
+        v-bind:id="color.id"
+        @click="handleToggle"
+      >
         <IconLocked v-if="color.isLocked" />
         <IconUnlocked v-else />
       </button>
