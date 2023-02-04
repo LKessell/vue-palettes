@@ -16,7 +16,7 @@ async function fetchPalette(hex: string, mode: string) {
   );
   const data = await response.json();
 
-  palette.value = data.colors ? formatColorData(data) : [];
+  return data;
 }
 
 function formatColorData(data: { colors: Array<IColor> }) {
@@ -56,7 +56,12 @@ function getRandomMode() {
 function getRandomizedPalette() {
   const hex = getRandomHex();
   const mode = getRandomMode();
-  fetchPalette(hex, mode);
+  fetchPalette(hex, mode).then((data) => {
+    if (data.colors) {
+      const colors = formatColorData(data);
+      updatePalette(colors);
+    }
+  });
 }
 
 function handleRandomizeClick(e: Event) {
