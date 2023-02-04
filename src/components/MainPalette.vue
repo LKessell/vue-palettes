@@ -16,10 +16,10 @@ async function fetchPalette(hex: string, mode: string) {
   );
   const data = await response.json();
 
-  palette.value = data.colors ? formatPalette(data) : [];
+  palette.value = data.colors ? formatColorData(data) : [];
 }
 
-function formatPalette(data: { colors: Array<IColor> }) {
+function formatColorData(data: { colors: Array<IColor> }) {
   return data.colors.map((color: IColor) => {
     return {
       isLocked: false,
