@@ -72,11 +72,15 @@ function toggleLock(id: string) {
 }
 
 function updatePalette(
-  data: Array<{ isLocked: boolean; hex: string; id: string }>
+  fetchedColors: Array<{ isLocked: boolean; hex: string; id: string }>
 ) {
-  palette.value.forEach((color, index) => {
-    if (!color.isLocked) palette.value[index] = data[index];
-  });
+  if (!palette.value.length) {
+    palette.value = fetchedColors;
+  } else {
+    palette.value.forEach((color, index) => {
+      if (!color.isLocked) palette.value[index] = fetchedColors[index];
+    });
+  }
 }
 
 onMounted(() => {
