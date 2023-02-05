@@ -8,7 +8,7 @@ interface IColor {
   };
 }
 
-const palette = ref<Array<{ isLocked: boolean; hex: string }>>([]);
+const palette = ref<Array<{ isLocked: boolean; hex: string; id: string }>>([]);
 
 async function fetchPalette(hex: string, mode: string) {
   const response = await fetch(
@@ -16,14 +16,15 @@ async function fetchPalette(hex: string, mode: string) {
   );
   const data = await response.json();
 
-  palette.value = data.colors ? formatPalette(data) : [];
+  return data;
 }
 
-function formatPalette(data: { colors: Array<IColor> }) {
+function formatColorData(data: { colors: Array<IColor> }) {
   return data.colors.map((color: IColor) => {
     return {
       isLocked: false,
       hex: color.hex.clean,
+      id: Math.random().toString(36).substring(2, 8),
     };
   });
 }
@@ -55,12 +56,36 @@ function getRandomMode() {
 function getRandomizedPalette() {
   const hex = getRandomHex();
   const mode = getRandomMode();
-  fetchPalette(hex, mode);
+  fetchPalette(hex, mode).then((data) => {
+    if (data.colors) {
+      const colors = formatColorData(data);
+      updatePalette(colors);
+    }
+  });
 }
 
 function handleRandomizeClick(e: Event) {
   e.preventDefault();
   getRandomizedPalette();
+}
+
+function toggleLock(id: string) {
+  const index = palette.value.findIndex((color) => color.id === id);
+  const color = palette.value[index];
+
+  color.isLocked = !color.isLocked;
+}
+
+function updatePalette(
+  fetchedColors: Array<{ isLocked: boolean; hex: string; id: string }>
+) {
+  if (!palette.value.length) {
+    palette.value = fetchedColors;
+  } else {
+    palette.value.forEach((color, index) => {
+      if (!color.isLocked) palette.value[index] = fetchedColors[index];
+    });
+  }
 }
 
 onMounted(() => {
@@ -75,6 +100,7 @@ onMounted(() => {
         v-for="(color, index) in palette"
         :color="color"
         :key="index + color.hex"
+        @toggle-lock="toggleLock"
       />
     </div>
     <button class="button" @click="handleRandomizeClick">Randomize</button>
