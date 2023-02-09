@@ -6,7 +6,12 @@ defineProps<{
 
 <template>
   <div class="saved-wrapper">
-    <div class="saved-swatch"></div>
+    <div
+      v-for="color in palette"
+      class="saved-swatch"
+      :key="'swatch' + color.id"
+      :style="{ backgroundColor: '#' + color.hex }"
+    ></div>
     <button>Delete</button>
   </div>
 </template>
@@ -16,7 +21,6 @@ defineProps<{
   display: flex;
 }
 .saved-swatch {
-  background-color: #abed79;
   width: 50px;
   height: 50px;
 }
