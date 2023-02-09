@@ -1,4 +1,8 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+defineProps<{
+  palette: Array<{ isLocked: boolean; hex: string; id: string }>;
+}>();
+</script>
 
 <template>
   <div class="saved-wrapper">
