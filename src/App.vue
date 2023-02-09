@@ -1,5 +1,24 @@
 <script setup lang="ts">
+import { ref } from "vue";
 import MainPalette from "./components/MainPalette.vue";
+
+const savedPalettes = ref<
+  Array<{
+    id: string;
+    colors: Array<{ isLocked: boolean; hex: string; id: string }>;
+  }>
+>([]);
+
+savedPalettes.value.push({
+  id: "Palette1",
+  colors: [
+    { isLocked: false, hex: "4A6CB5", id: "sfjksjk" },
+    { isLocked: false, hex: "6D89C5", id: "sfjkaaaa" },
+    { isLocked: false, hex: "91A6D4", id: "sfjdabk" },
+    { isLocked: false, hex: "CCCCCC", id: "sfjksbb" },
+    { isLocked: false, hex: "E6E6E6", id: "sfjkoba" },
+  ],
+});
 </script>
 
 <template>
