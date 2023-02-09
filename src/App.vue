@@ -29,7 +29,8 @@ savedPalettes.value.push({
 
   <main>
     <MainPalette />
-    <section>
+    <section class="saved-section">
+      <h2>Saved Palettes</h2>
       <SavedPalette
         v-for="palette in savedPalettes"
         :palette="palette.colors"
@@ -51,7 +52,14 @@ header {
 
 main {
   display: flex;
+  justify-content: space-between;
+}
+
+.saved-section {
+  display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 0 2vw;
+  text-align: center;
 }
 </style>
