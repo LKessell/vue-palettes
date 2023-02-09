@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import MainPalette from "./components/MainPalette.vue";
+import SavedPalette from "./components/SavedPalette.vue";
 
 const savedPalettes = ref<
   Array<{
@@ -28,6 +29,13 @@ savedPalettes.value.push({
 
   <main>
     <MainPalette />
+    <section>
+      <SavedPalette
+        v-for="palette in savedPalettes"
+        :palette="palette.colors"
+        :key="'palette' + palette.id"
+      />
+    </section>
   </main>
 </template>
 
