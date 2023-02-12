@@ -55,11 +55,17 @@ main {
   justify-content: space-between;
 }
 
+h2 {
+  padding-bottom: 1vw;
+}
+
 .saved-section {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0 2vw;
+  padding: 2vw;
   text-align: center;
+  background-color: #262626;
+  border-radius: 0.5vw 0 0 0.5vw;
 }
 </style>
