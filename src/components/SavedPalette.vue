@@ -23,11 +23,11 @@ defineProps<{
 .saved-wrapper {
   display: flex;
   align-items: center;
+  padding: 1vw 0;
 }
 .saved-swatch {
-  width: 3vw;
-  height: 3vw;
-  transform: skewX(20deg) scaleY(cos(20deg));
+  width: 2vw;
+  height: 2vw;
 }
 
 .delete-button {
@@ -40,7 +40,7 @@ defineProps<{
 }
 
 svg {
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 2vw;
+  height: 2vw;
 }
 </style>
