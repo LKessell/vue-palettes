@@ -10,6 +10,14 @@ interface IColor {
 
 const palette = ref<Array<{ isLocked: boolean; hex: string; id: string }>>([]);
 
+const emit = defineEmits(["savePalette"]);
+
+function handleSave() {
+  if (palette.value.length) {
+    emit("savePalette", palette.value);
+  }
+}
+
 async function fetchPalette(hex: string, mode: string) {
   const response = await fetch(
     `https://www.thecolorapi.com/scheme?hex=${hex}&mode=${mode}&count=5`
@@ -128,6 +136,7 @@ onMounted(() => {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
 }
 .palette-wrapper {
   display: flex;
