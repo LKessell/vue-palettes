@@ -10,6 +10,16 @@ const savedPalettes = ref<
   }>
 >([]);
 
+function savePalette(
+  colors: Array<{ isLocked: boolean; hex: string; id: string }>
+) {
+  colors.forEach((color) => (color.isLocked = false));
+  savedPalettes.value.push({
+    id: "palette-" + Math.random().toString(36).substring(2, 8),
+    colors: colors,
+  });
+}
+
 savedPalettes.value.push({
   id: "Palette1",
   colors: [
@@ -28,7 +38,7 @@ savedPalettes.value.push({
   </header>
 
   <main>
-    <MainPalette />
+    <MainPalette @save-palette="savePalette" />
     <section class="saved-section">
       <h2>Saved Palettes</h2>
       <SavedPalette
