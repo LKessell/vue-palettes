@@ -13,7 +13,6 @@ const savedPalettes = ref<
 function savePalette(
   colors: Array<{ isLocked: boolean; hex: string; id: string }>
 ) {
-  colors.forEach((color) => (color.isLocked = false));
   savedPalettes.value.push({
     id: "palette-" + Math.random().toString(36).substring(2, 8),
     colors: colors,
