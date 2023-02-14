@@ -14,7 +14,10 @@ const emit = defineEmits(["savePalette"]);
 
 function handleSave() {
   if (palette.value.length) {
-    emit("savePalette", palette.value);
+    const newPalette = [...palette.value];
+    newPalette.forEach((color) => (color.isLocked = false));
+
+    emit("savePalette", newPalette);
   }
 }
 
@@ -112,6 +115,7 @@ onMounted(() => {
       />
     </div>
     <button class="button" @click="handleRandomizeClick">Randomize</button>
+    <button class="button" @click="handleSave">Save Palette</button>
   </section>
 </template>
 
