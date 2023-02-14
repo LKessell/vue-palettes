@@ -129,6 +129,7 @@ onMounted(() => {
   font-size: large;
   font-weight: bold;
   transition: 0.5s;
+  margin: 0 0.5vw;
 }
 
 .button:hover {
@@ -138,13 +139,14 @@ onMounted(() => {
 }
 .main-palette {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-flow: row wrap;
+  justify-content: center;
   width: 100%;
 }
 .palette-wrapper {
   display: flex;
   justify-content: center;
+  width: 100%;
 }
 
 @media (max-width: 1024px) {
