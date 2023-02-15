@@ -152,7 +152,7 @@ onMounted(() => {
 @media (max-width: 1024px) {
   .palette-wrapper {
     flex-direction: column;
-    padding-bottom: 2rem;
+    padding: 0 25% 2rem 25%;
   }
 }
 </style>
