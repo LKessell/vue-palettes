@@ -43,4 +43,16 @@ svg {
   width: 2vw;
   height: 2vw;
 }
+
+@media (max-width: 1024px) {
+  .saved-swatch {
+    width: 2.5vw;
+    height: 2.5vw;
+  }
+
+  svg {
+    width: 2.5vw;
+    height: 2.5vw;
+  }
+}
 </style>
