@@ -65,16 +65,32 @@ main {
 }
 
 h2 {
-  padding-bottom: 1vw;
+  padding-bottom: 1rem;
 }
 
 .saved-section {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 2vw;
+  height: fit-content;
+  padding: 1.5rem;
   text-align: center;
   background-color: #262626;
-  border-radius: 0.5vw 0 0 0.5vw;
+  border-radius: 0.5rem 0 0 0.5rem;
+}
+
+@media (max-width: 768px) {
+  main {
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+  }
+
+  .saved-section {
+    border-radius: 0.5rem 0.5rem 0 0;
+    margin-top: 2rem;
+    width: 20rem;
+    height: 100%;
+  }
 }
 </style>
