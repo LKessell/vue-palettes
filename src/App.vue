@@ -40,11 +40,13 @@ savedPalettes.value.push({
     <MainPalette @save-palette="savePalette" />
     <section class="saved-section">
       <h2>Saved Palettes</h2>
-      <SavedPalette
-        v-for="palette in savedPalettes"
-        :palette="palette.colors"
-        :key="'palette' + palette.id"
-      />
+      <ul>
+        <SavedPalette
+          v-for="palette in savedPalettes"
+          :palette="palette.colors"
+          :key="'palette' + palette.id"
+        />
+      </ul>
     </section>
   </main>
 </template>
@@ -66,6 +68,10 @@ main {
 
 h2 {
   padding-bottom: 1rem;
+}
+
+ul {
+  padding: 0;
 }
 
 .saved-section {

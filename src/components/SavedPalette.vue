@@ -6,7 +6,7 @@ defineProps<{
 </script>
 
 <template>
-  <div class="saved-wrapper">
+  <li class="saved-wrapper">
     <div
       v-for="color in palette"
       class="saved-swatch"
@@ -16,7 +16,7 @@ defineProps<{
     <button class="delete-button" aria-label="delete">
       <IconTrash />
     </button>
-  </div>
+  </li>
 </template>
 
 <style scoped>
