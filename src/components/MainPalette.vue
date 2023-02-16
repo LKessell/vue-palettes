@@ -140,6 +140,7 @@ onMounted(() => {
 .main-palette {
   display: flex;
   flex-flow: row wrap;
+  align-content: flex-start;
   justify-content: center;
   width: 100%;
 }
@@ -153,6 +154,17 @@ onMounted(() => {
   .palette-wrapper {
     flex-direction: column;
     padding: 0 25% 2rem 25%;
+  }
+}
+
+@media (max-width: 768px) {
+  .button {
+    height: 3.5rem;
+    width: 8rem;
+    font-size: medium;
+  }
+  .palette-wrapper {
+    padding: 0 12% 2rem 12%;
   }
 }
 </style>
