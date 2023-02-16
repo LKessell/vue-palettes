@@ -42,7 +42,7 @@ function savePalette(
 
 <style scoped>
 header {
-  line-height: 3;
+  line-height: 4;
   text-align: center;
 }
 
