@@ -82,4 +82,11 @@ svg {
     padding: 0 0 0 0.5rem;
   }
 }
+
+@media (max-width: 768px) {
+  .swatch {
+    height: 14vw;
+    width: 40vw;
+  }
+}
 </style>
