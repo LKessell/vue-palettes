@@ -10,6 +10,17 @@ interface IColor {
 
 const palette = ref<Array<{ isLocked: boolean; hex: string; id: string }>>([]);
 
+const emit = defineEmits(["savePalette"]);
+
+function handleSave() {
+  if (palette.value.length) {
+    const newPalette = [...palette.value];
+    newPalette.forEach((color) => (color.isLocked = false));
+
+    emit("savePalette", newPalette);
+  }
+}
+
 async function fetchPalette(hex: string, mode: string) {
   const response = await fetch(
     `https://www.thecolorapi.com/scheme?hex=${hex}&mode=${mode}&count=5`
@@ -104,6 +115,7 @@ onMounted(() => {
       />
     </div>
     <button class="button" @click="handleRandomizeClick">Randomize</button>
+    <button class="button" @click="handleSave">Save Palette</button>
   </section>
 </template>
 
@@ -117,6 +129,7 @@ onMounted(() => {
   font-size: large;
   font-weight: bold;
   transition: 0.5s;
+  margin: 0 0.5vw;
 }
 
 .button:hover {
@@ -126,18 +139,32 @@ onMounted(() => {
 }
 .main-palette {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-flow: row wrap;
+  align-content: flex-start;
+  justify-content: center;
+  width: 100%;
 }
 .palette-wrapper {
   display: flex;
   justify-content: center;
+  width: 100%;
 }
 
 @media (max-width: 1024px) {
   .palette-wrapper {
     flex-direction: column;
-    padding-bottom: 2rem;
+    padding: 0 25% 2rem 25%;
+  }
+}
+
+@media (max-width: 768px) {
+  .button {
+    height: 3.5rem;
+    width: 8rem;
+    font-size: medium;
+  }
+  .palette-wrapper {
+    padding: 0 12% 2rem 12%;
   }
 }
 </style>

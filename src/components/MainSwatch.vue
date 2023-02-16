@@ -41,8 +41,8 @@ const handleToggle = (event: Event) => {
   padding: 2rem 0;
 }
 .swatch {
-  height: 8rem;
-  width: 12rem;
+  height: 8vw;
+  width: 12vw;
 }
 
 .color-details {
@@ -74,11 +74,19 @@ svg {
   }
 
   .swatch {
-    height: 7rem;
+    height: 12vw;
+    width: 18vw;
   }
 
   .color-details {
     padding: 0 0 0 0.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .swatch {
+    height: 18vw;
+    width: 42vw;
   }
 }
 </style>
