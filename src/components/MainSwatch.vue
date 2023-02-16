@@ -85,8 +85,8 @@ svg {
 
 @media (max-width: 768px) {
   .swatch {
-    height: 14vw;
-    width: 40vw;
+    height: 18vw;
+    width: 42vw;
   }
 }
 </style>
