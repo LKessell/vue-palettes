@@ -18,6 +18,12 @@ function savePalette(
     colors: colors,
   });
 }
+
+function deletePalette(id: string) {
+  savedPalettes.value = savedPalettes.value.filter(
+    (palette) => palette.id !== id
+  );
+}
 </script>
 
 <template>
@@ -34,6 +40,7 @@ function savePalette(
           v-for="palette in savedPalettes"
           :palette="palette.colors"
           :key="'palette' + palette.id"
+          @delete-palette="deletePalette"
         />
       </ul>
     </section>
