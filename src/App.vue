@@ -39,6 +39,7 @@ function deletePalette(id: string) {
         <SavedPalette
           v-for="palette in savedPalettes"
           :palette="palette.colors"
+          :paletteId="palette.id"
           :key="'palette' + palette.id"
           @delete-palette="deletePalette"
         />
