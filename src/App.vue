@@ -50,8 +50,13 @@ function deletePalette(id: string) {
 
 <style scoped>
 header {
-  line-height: 4;
+  line-height: 2;
   text-align: center;
+}
+
+h1 {
+  border-bottom: 1px solid #262626;
+  margin: 2rem 0;
 }
 
 .title {
@@ -80,6 +85,7 @@ ul {
   text-align: center;
   background-color: #262626;
   border-radius: 0.5rem 0 0 0.5rem;
+  min-width: 15rem;
 }
 
 @media (max-width: 768px) {
