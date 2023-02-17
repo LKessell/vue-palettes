@@ -9,7 +9,8 @@ const emit = defineEmits(["deletePalette"]);
 
 function handleDelete(event: Event) {
   const button = event.currentTarget as HTMLButtonElement;
-  console.log(button);
+  const id = button?.id.slice(3);
+  emit("deletePalette", id);
 }
 </script>
 
