@@ -70,15 +70,18 @@ main {
 
 h2 {
   padding-bottom: 1rem;
+  white-space: nowrap;
 }
 
 ul {
+  list-style: none;
   padding: 0;
 }
 
 .saved-section {
   display: flex;
   flex-direction: column;
+  flex-shrink: 0;
   align-items: center;
   height: fit-content;
   padding: 1.5rem;
