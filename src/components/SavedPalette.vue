@@ -2,7 +2,16 @@
 import IconTrash from "./icons/Trash.vue";
 defineProps<{
   palette: Array<{ isLocked: boolean; hex: string; id: string }>;
+  paletteId: string;
 }>();
+
+const emit = defineEmits(["deletePalette"]);
+
+function handleDelete(event: Event) {
+  const button = event.currentTarget as HTMLButtonElement;
+  const id = button?.id.slice(3);
+  emit("deletePalette", id);
+}
 </script>
 
 <template>
@@ -13,7 +22,12 @@ defineProps<{
       :key="'swatch' + color.id"
       :style="{ backgroundColor: '#' + color.hex }"
     ></div>
-    <button class="delete-button" aria-label="delete">
+    <button
+      :id="'dl-' + paletteId"
+      class="delete-button"
+      aria-label="delete"
+      @click="handleDelete"
+    >
       <IconTrash />
     </button>
   </li>

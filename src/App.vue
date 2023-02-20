@@ -18,6 +18,12 @@ function savePalette(
     colors: colors,
   });
 }
+
+function deletePalette(id: string) {
+  savedPalettes.value = savedPalettes.value.filter(
+    (palette) => palette.id !== id
+  );
+}
 </script>
 
 <template>
@@ -33,7 +39,9 @@ function savePalette(
         <SavedPalette
           v-for="palette in savedPalettes"
           :palette="palette.colors"
+          :paletteId="palette.id"
           :key="'palette' + palette.id"
+          @delete-palette="deletePalette"
         />
       </ul>
     </section>
@@ -42,8 +50,13 @@ function savePalette(
 
 <style scoped>
 header {
-  line-height: 4;
+  line-height: 2;
   text-align: center;
+}
+
+h1 {
+  border-bottom: 1px solid #262626;
+  margin: 2rem 0;
 }
 
 .title {
@@ -57,21 +70,25 @@ main {
 
 h2 {
   padding-bottom: 1rem;
+  white-space: nowrap;
 }
 
 ul {
+  list-style: none;
   padding: 0;
 }
 
 .saved-section {
   display: flex;
   flex-direction: column;
+  flex-shrink: 0;
   align-items: center;
   height: fit-content;
   padding: 1.5rem;
   text-align: center;
   background-color: #262626;
   border-radius: 0.5rem 0 0 0.5rem;
+  min-width: 15rem;
 }
 
 @media (max-width: 768px) {
