@@ -42,6 +42,7 @@ function deletePalette(id: string) {
   <main>
     <MainPalette @save-palette="savePalette" />
     <section class="saved-section">
+      <button class="saved-section-toggle">Open</button>
       <h2>Saved Palettes</h2>
       <ul>
         <SavedPalette
@@ -74,6 +75,19 @@ h1 {
 main {
   display: flex;
   justify-content: space-between;
+}
+
+.saved-section-toggle {
+  position: absolute;
+  left: -3vw;
+  top: 6%;
+  text-orientation: upright;
+  writing-mode: vertical-lr;
+  background-color: #262626;
+  border: none;
+  color: #fff;
+  padding: 5vw 1vw;
+  border-radius: 1vw 0 0 1vw;
 }
 
 h2 {
@@ -111,6 +125,12 @@ ul {
     margin-top: 2rem;
     width: 20rem;
     height: 100%;
+  }
+}
+
+@media (max-width: 1024px) {
+  .saved-section-toggle {
+    display: none;
   }
 }
 </style>
