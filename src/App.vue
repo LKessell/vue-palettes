@@ -1,25 +1,25 @@
 <script setup lang="ts">
-import { computed, ref } from "vue";
+import { computed, ref, watch } from "vue";
 import MainPalette from "./components/MainPalette.vue";
 import SavedPalette from "./components/SavedPalette.vue";
 
-// const savedPalettes = ref<
-//   Array<{
-//     id: string;
-//     colors: Array<{ isLocked: boolean; hex: string; id: string }>;
-//   }>
-// >([]);
+const savedPalettes = ref<
+  Array<{
+    id: string;
+    colors: Array<{ isLocked: boolean; hex: string; id: string }>;
+  }>
+>(JSON.parse(localStorage.getItem("vpal-saved") ?? "[]"));
 
-const savedPalettes = computed({
-  get() {
-    console.log("get");
-    return JSON.parse(localStorage.getItem("vpal-saved") ?? "[]");
-  },
-  set(palettes) {
-    console.log("set");
-    localStorage.setItem("vpal-saved", JSON.stringify(palettes));
-  },
-});
+// const savedPalettes = computed({
+//   get() {
+//     console.log("get");
+//     return JSON.parse(localStorage.getItem("vpal-saved") ?? "[]");
+//   },
+//   set(palettes) {
+//     console.log("set");
+//     localStorage.setItem("vpal-saved", JSON.stringify(palettes));
+//   },
+// });
 
 function savePalette(
   colors: Array<{ isLocked: boolean; hex: string; id: string }>
