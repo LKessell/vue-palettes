@@ -133,4 +133,17 @@ ul {
     display: none;
   }
 }
+
+@media (min-width: 1024px) {
+  .saved-section {
+    position: absolute;
+    left: 0;
+    margin-left: 100%;
+    transition: 0.5s ease;
+  }
+
+  .open {
+    transform: translateX(-100%);
+  }
+}
 </style>
