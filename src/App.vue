@@ -10,6 +10,14 @@ const savedPalettes = ref<
   }>
 >(JSON.parse(localStorage.getItem("vpal-saved") ?? "[]"));
 
+watch(
+  savedPalettes,
+  (newPalettes) => {
+    localStorage.setItem("vpal-saved", JSON.stringify(newPalettes));
+  },
+  { deep: true }
+);
+
 // const savedPalettes = computed({
 //   get() {
 //     console.log("get");
