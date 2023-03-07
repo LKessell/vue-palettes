@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, watch } from "vue";
 import MainPalette from "./components/MainPalette.vue";
 import SavedPalette from "./components/SavedPalette.vue";
 
@@ -8,7 +8,15 @@ const savedPalettes = ref<
     id: string;
     colors: Array<{ isLocked: boolean; hex: string; id: string }>;
   }>
->([]);
+>(JSON.parse(localStorage.getItem("vpal-saved") ?? "[]"));
+
+watch(
+  savedPalettes,
+  (newPalettes) => {
+    localStorage.setItem("vpal-saved", JSON.stringify(newPalettes));
+  },
+  { deep: true }
+);
 
 function savePalette(
   colors: Array<{ isLocked: boolean; hex: string; id: string }>
