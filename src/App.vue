@@ -43,7 +43,9 @@ function deletePalette(id: string) {
   <main>
     <MainPalette @save-palette="savePalette" />
     <section class="saved-section" :class="{ open: isSavedOpen }">
-      <button class="saved-section-toggle">Open</button>
+      <button class="saved-section-toggle" @click="isSavedOpen = !isSavedOpen">
+        Open
+      </button>
       <h2>Saved Palettes</h2>
       <ul>
         <SavedPalette
