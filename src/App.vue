@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, watch } from "vue";
+import { computed, ref, watch } from "vue";
 import MainPalette from "./components/MainPalette.vue";
 import SavedPalette from "./components/SavedPalette.vue";
 
@@ -9,7 +9,14 @@ const savedPalettes = ref<
     colors: Array<{ isLocked: boolean; hex: string; id: string }>;
   }>
 >(JSON.parse(localStorage.getItem("vpal-saved") ?? "[]"));
-const isSavedOpen = ref(false);
+const isSavedExpanded = ref(false);
+const isSavedVisible = computed(() => {
+  if (window.innerWidth > 1024 && !isSavedExpanded.value) {
+    return false;
+  } else {
+    return true;
+  }
+});
 
 watch(
   savedPalettes,
@@ -42,8 +49,15 @@ function deletePalette(id: string) {
 
   <main>
     <MainPalette @save-palette="savePalette" />
-    <section class="saved-section" :class="{ open: isSavedOpen }">
-      <button class="saved-section-toggle" @click="isSavedOpen = !isSavedOpen">
+    <section
+      class="saved-section"
+      :class="{ open: isSavedExpanded }"
+      :aria-expanded="isSavedVisible"
+    >
+      <button
+        class="saved-section-toggle"
+        @click="isSavedExpanded = !isSavedExpanded"
+      >
         Open
       </button>
       <h2>Saved Palettes</h2>
