@@ -9,6 +9,7 @@ const savedPalettes = ref<
     colors: Array<{ isLocked: boolean; hex: string; id: string }>;
   }>
 >(JSON.parse(localStorage.getItem("vpal-saved") ?? "[]"));
+const isSavedOpen = ref(false);
 
 watch(
   savedPalettes,
@@ -41,7 +42,7 @@ function deletePalette(id: string) {
 
   <main>
     <MainPalette @save-palette="savePalette" />
-    <section class="saved-section">
+    <section class="saved-section" :class="{ open: isSavedOpen }">
       <button class="saved-section-toggle">Open</button>
       <h2>Saved Palettes</h2>
       <ul>
