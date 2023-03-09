@@ -64,6 +64,9 @@ function deletePalette(id: string) {
       </button>
       <h2>Saved Palettes</h2>
       <ul>
+        <li v-if="!savedPalettes.length">
+          You currently have no palettes saved.
+        </li>
         <SavedPalette
           v-for="palette in savedPalettes"
           :palette="palette.colors"
@@ -98,13 +101,13 @@ main {
 
 .saved-section-toggle {
   position: absolute;
-  left: -3.5vw;
+  left: -4rem;
   top: 6%;
   background-color: #262626;
   border: none;
   color: #fff;
-  padding: 2vw 1vw;
-  border-radius: 1vw 0 0 1vw;
+  padding: 2rem 1rem;
+  border-radius: 0.5rem 0 0 0.5rem;
 }
 
 svg {
@@ -113,6 +116,7 @@ svg {
 }
 
 h2 {
+  font-weight: revert;
   padding-bottom: 1rem;
   white-space: nowrap;
 }
@@ -161,7 +165,7 @@ ul {
     position: absolute;
     left: 0;
     margin-left: 100%;
-    transition: 0.5s ease;
+    transition: transform 0.5s ease;
   }
 
   .open {
