@@ -50,18 +50,20 @@ function deletePalette(id: string) {
 
   <main>
     <MainPalette @save-palette="savePalette" />
+    <button
+      class="saved-section-toggle"
+      :class="{ 'toggle-open': isSavedExpanded }"
+      @click="isSavedExpanded = !isSavedExpanded"
+      :aria-label="isSavedVisible ? 'Close sidebar' : 'Open sidebar'"
+    >
+      <IconFolder />
+    </button>
     <section
       class="saved-section"
       :class="{ open: isSavedExpanded }"
       :aria-expanded="isSavedVisible"
+      :aria-hidden="!isSavedVisible"
     >
-      <button
-        class="saved-section-toggle"
-        @click="isSavedExpanded = !isSavedExpanded"
-        :aria-label="isSavedVisible ? 'Close sidebar' : 'Open sidebar'"
-      >
-        <IconFolder />
-      </button>
       <h2>Saved Palettes</h2>
       <ul>
         <li v-if="!savedPalettes.length">
@@ -101,13 +103,13 @@ main {
 
 .saved-section-toggle {
   position: absolute;
-  left: -4rem;
-  top: 6%;
+  right: 0;
   background-color: #262626;
   border: none;
   color: #fff;
   padding: 2rem 1rem;
   border-radius: 0.5rem 0 0 0.5rem;
+  transition: right 0.5s ease;
 }
 
 svg {
@@ -170,6 +172,10 @@ ul {
 
   .open {
     transform: translateX(-100%);
+  }
+
+  .toggle-open {
+    right: 14.5rem;
   }
 }
 </style>
