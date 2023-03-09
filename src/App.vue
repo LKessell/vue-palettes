@@ -2,6 +2,7 @@
 import { computed, ref, watch } from "vue";
 import MainPalette from "./components/MainPalette.vue";
 import SavedPalette from "./components/SavedPalette.vue";
+import IconFolder from "./components/icons/Folder.vue";
 
 const savedPalettes = ref<
   Array<{
@@ -58,7 +59,7 @@ function deletePalette(id: string) {
         class="saved-section-toggle"
         @click="isSavedExpanded = !isSavedExpanded"
       >
-        Open
+        <IconFolder />
       </button>
       <h2>Saved Palettes</h2>
       <ul>
@@ -96,15 +97,18 @@ main {
 
 .saved-section-toggle {
   position: absolute;
-  left: -3vw;
+  left: -3.5vw;
   top: 6%;
-  text-orientation: upright;
-  writing-mode: vertical-lr;
   background-color: #262626;
   border: none;
   color: #fff;
-  padding: 5vw 1vw;
+  padding: 2vw 1vw;
   border-radius: 1vw 0 0 1vw;
+}
+
+svg {
+  width: 2rem;
+  height: 2rem;
 }
 
 h2 {
