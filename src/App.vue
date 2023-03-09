@@ -34,6 +34,16 @@ function savePalette(
     id: "palette-" + Math.random().toString(36).substring(2, 8),
     colors: colors,
   });
+  animateSave();
+}
+
+function animateSave() {
+  const button = document.querySelector(".saved-section-toggle");
+
+  if (button) {
+    button.classList.add("save-success");
+    setTimeout(() => button.classList.remove("save-success"), 600);
+  }
 }
 
 function deletePalette(id: string) {
@@ -111,7 +121,11 @@ main {
   padding: 2rem 1rem;
   position: absolute;
   right: 0;
-  transition: right 0.5s ease;
+  transition: right 0.5s ease, color 0.3s ease-in-out;
+}
+
+.save-success {
+  color: turquoise;
 }
 
 svg {
