@@ -179,4 +179,10 @@ ul {
     right: 14.5rem;
   }
 }
+
+@media (min-width: 1440px) {
+  .toggle-open {
+    right: calc(12vw + 3.5rem);
+  }
+}
 </style>
