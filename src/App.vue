@@ -12,7 +12,7 @@ const savedPalettes = ref<
 >(JSON.parse(localStorage.getItem("vpal-saved") ?? "[]"));
 const isSavedExpanded = ref(false);
 const isSavedVisible = computed(() => {
-  if (window.innerWidth > 1024 && !isSavedExpanded.value) {
+  if (window.innerWidth > 1023 && !isSavedExpanded.value) {
     return false;
   } else {
     return true;
@@ -58,6 +58,7 @@ function deletePalette(id: string) {
       <button
         class="saved-section-toggle"
         @click="isSavedExpanded = !isSavedExpanded"
+        :aria-label="isSavedVisible ? 'Close sidebar' : 'Open sidebar'"
       >
         <IconFolder />
       </button>
