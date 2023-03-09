@@ -103,13 +103,14 @@ main {
 }
 
 .saved-section-toggle {
-  position: absolute;
-  right: 0;
   background-color: #262626;
   border: none;
-  color: #fff;
-  padding: 2rem 1rem;
   border-radius: 0.5rem 0 0 0.5rem;
+  color: #fff;
+  cursor: pointer;
+  padding: 2rem 1rem;
+  position: absolute;
+  right: 0;
   transition: right 0.5s ease;
 }
 
