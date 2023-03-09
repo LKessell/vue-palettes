@@ -73,6 +73,7 @@ function deletePalette(id: string) {
           v-for="palette in savedPalettes"
           :palette="palette.colors"
           :paletteId="palette.id"
+          :tabbable="isSavedVisible"
           :key="'palette' + palette.id"
           @delete-palette="deletePalette"
         />
