@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { ref, watch } from "vue";
+import { computed, ref, watch } from "vue";
 import MainPalette from "./components/MainPalette.vue";
 import SavedPalette from "./components/SavedPalette.vue";
+import IconFolder from "./components/icons/Folder.vue";
 
 const savedPalettes = ref<
   Array<{
@@ -9,6 +10,14 @@ const savedPalettes = ref<
     colors: Array<{ isLocked: boolean; hex: string; id: string }>;
   }>
 >(JSON.parse(localStorage.getItem("vpal-saved") ?? "[]"));
+const isSavedExpanded = ref(false);
+const isSavedVisible = computed(() => {
+  if (window.innerWidth > 1023 && !isSavedExpanded.value) {
+    return false;
+  } else {
+    return true;
+  }
+});
 
 watch(
   savedPalettes,
@@ -25,6 +34,16 @@ function savePalette(
     id: "palette-" + Math.random().toString(36).substring(2, 8),
     colors: colors,
   });
+  animateSave();
+}
+
+function animateSave() {
+  const button = document.querySelector(".saved-section-toggle");
+
+  if (button) {
+    button.classList.add("save-success");
+    setTimeout(() => button.classList.remove("save-success"), 600);
+  }
 }
 
 function deletePalette(id: string) {
@@ -41,13 +60,30 @@ function deletePalette(id: string) {
 
   <main>
     <MainPalette @save-palette="savePalette" />
-    <section class="saved-section">
+    <button
+      class="saved-section-toggle"
+      :class="{ 'toggle-open': isSavedExpanded }"
+      @click="isSavedExpanded = !isSavedExpanded"
+      :aria-label="isSavedVisible ? 'Close sidebar' : 'Open sidebar'"
+    >
+      <IconFolder />
+    </button>
+    <section
+      class="saved-section"
+      :class="{ open: isSavedExpanded }"
+      :aria-expanded="isSavedVisible"
+      :aria-hidden="!isSavedVisible"
+    >
       <h2>Saved Palettes</h2>
       <ul>
+        <li v-if="!savedPalettes.length">
+          You currently have no palettes saved.
+        </li>
         <SavedPalette
           v-for="palette in savedPalettes"
           :palette="palette.colors"
           :paletteId="palette.id"
+          :tabbable="isSavedVisible"
           :key="'palette' + palette.id"
           @delete-palette="deletePalette"
         />
@@ -76,7 +112,29 @@ main {
   justify-content: space-between;
 }
 
+.saved-section-toggle {
+  background-color: #262626;
+  border: none;
+  border-radius: 0.5rem 0 0 0.5rem;
+  color: #fff;
+  cursor: pointer;
+  padding: 2rem 1rem;
+  position: absolute;
+  right: 0;
+  transition: right 0.5s ease, color 0.3s ease-in-out;
+}
+
+.save-success {
+  color: turquoise;
+}
+
+svg {
+  width: 2rem;
+  height: 2rem;
+}
+
 h2 {
+  font-weight: revert;
   padding-bottom: 1rem;
   white-space: nowrap;
 }
@@ -111,6 +169,35 @@ ul {
     margin-top: 2rem;
     width: 20rem;
     height: 100%;
+  }
+}
+
+@media (max-width: 1024px) {
+  .saved-section-toggle {
+    display: none;
+  }
+}
+
+@media (min-width: 1024px) {
+  .saved-section {
+    position: absolute;
+    left: 0;
+    margin-left: 100%;
+    transition: transform 0.5s ease;
+  }
+
+  .open {
+    transform: translateX(-100%);
+  }
+
+  .toggle-open {
+    right: 14.5rem;
+  }
+}
+
+@media (min-width: 1440px) {
+  .toggle-open {
+    right: calc(12vw + 3.5rem);
   }
 }
 </style>

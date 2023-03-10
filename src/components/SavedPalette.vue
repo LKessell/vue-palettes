@@ -3,6 +3,7 @@ import IconTrash from "./icons/Trash.vue";
 defineProps<{
   palette: Array<{ isLocked: boolean; hex: string; id: string }>;
   paletteId: string;
+  tabbable: boolean;
 }>();
 
 const emit = defineEmits(["deletePalette"]);
@@ -27,6 +28,7 @@ function handleDelete(event: Event) {
       class="delete-button"
       aria-label="delete"
       @click="handleDelete"
+      :tabindex="tabbable ? '0' : '-1'"
     >
       <IconTrash />
     </button>

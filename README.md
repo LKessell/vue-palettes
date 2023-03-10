@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/77205456/220200427-399e7092-d4a8-4e0b-afd5-cb8bd2950f7c.gif">
+  <img alt="Application demo gif" src="https://user-images.githubusercontent.com/77205456/224162787-6d84c304-4d8b-4864-a245-8ad9d6bb3662.gif">
 </p>
 
 ## Project Overview
@@ -61,6 +61,6 @@ There is still a lot of room for continued exploration in this project, and many
 
 Palettes generated with <a target="\_blank" href="https://www.thecolorapi.com/">The Color API</a>
 
-<a target="_blank" href="https://icons8.com/icon/SZTl3l31z6gR/rgb-color-wheel">RGB Color Wheel</a>, <a target="_blank" href="https://icons8.com/icon/7DbfyX80LGwU/trash">Trash</a>, <a target="_blank" href="https://icons8.com/icon/3seXONfwoB83/padlock">Padlock</a>, and <a target="_blank" href="https://icons8.com/icon/0R7F3PxtxHVm/lock">Lock</a> icons by <a target="_blank" href="https://icons8.com">Icons8</a>
+<a target="_blank" href="https://icons8.com/icon/SZTl3l31z6gR/rgb-color-wheel">RGB Color Wheel</a>, <a target="_blank" href="https://icons8.com/icon/sfmAmtufhDys/folder">Folder</a>, <a target="_blank" href="https://icons8.com/icon/7DbfyX80LGwU/trash">Trash</a>, <a target="_blank" href="https://icons8.com/icon/3seXONfwoB83/padlock">Padlock</a>, and <a target="_blank" href="https://icons8.com/icon/0R7F3PxtxHVm/lock">Lock</a> icons by <a target="_blank" href="https://icons8.com">Icons8</a>
 
 Markdown badges by <a href="https://github.com/Ileriayo/markdown-badges">Ileriayo</a>
