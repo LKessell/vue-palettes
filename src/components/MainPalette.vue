@@ -68,7 +68,9 @@ function getRandomMode() {
 
 function getRandomizedPalette() {
   const hex = getRandomHex();
-  const mode = getRandomMode();
+  const mode =
+    paletteMode.value === "random" ? getRandomMode() : paletteMode.value;
+
   fetchPalette(hex, mode).then((data) => {
     if (data.colors) {
       const colors = formatColorData(data);
