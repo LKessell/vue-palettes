@@ -8,7 +8,7 @@ defineEmits(["update:mode"]);
   <select
     id="typeSelect"
     :value="mode"
-    @change="$emit('update:mode', $event.target.value)"
+    @change="$emit('update:mode', ($event.target as HTMLSelectElement).value)"
   >
     <option value="random">Random</option>
     <option value="analogic">Analogic</option>
