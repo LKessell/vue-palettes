@@ -30,7 +30,9 @@ function getNameLabel(name: string) {
     @change="$emit('update:mode', ($event.target as HTMLSelectElement).value)"
   >
     <option value="random">Random</option>
-    <option value="analogic">Analogic</option>
+    <option v-for="mode in modes" :value="mode" :key="mode">
+      {{ getNameLabel(mode) }}
+    </option>
   </select>
 </template>
 
