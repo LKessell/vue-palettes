@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { onMounted, ref } from "vue";
 import MainSwatch from "./MainSwatch.vue";
+import TypeSelect from "./TypeSelect.vue";
 
 interface IColor {
   hex: {
@@ -9,6 +10,7 @@ interface IColor {
 }
 
 const palette = ref<Array<{ isLocked: boolean; hex: string; id: string }>>([]);
+const paletteMode = ref("random");
 
 const emit = defineEmits(["savePalette"]);
 
@@ -114,6 +116,7 @@ onMounted(() => {
         @toggle-lock="toggleLock"
       />
     </div>
+    <TypeSelect v-model:mode="paletteMode" />
     <button class="button" @click="handleRandomizeClick">Randomize</button>
     <button class="button" @click="handleSave">Save Palette</button>
   </section>
