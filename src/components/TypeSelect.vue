@@ -23,17 +23,30 @@ function getNameLabel(name: string) {
 </script>
 
 <template>
-  <label for="typeSelect">Palette Type:</label>
-  <select
-    id="typeSelect"
-    :value="mode"
-    @change="$emit('update:mode', ($event.target as HTMLSelectElement).value)"
-  >
-    <option value="random">Random</option>
-    <option v-for="mode in modes" :value="mode" :key="mode">
-      {{ getNameLabel(mode) }}
-    </option>
-  </select>
+  <div class="select-wrapper">
+    <label for="typeSelect">Palette Type:</label>
+    <select
+      id="typeSelect"
+      :value="mode"
+      @change="$emit('update:mode', ($event.target as HTMLSelectElement).value)"
+    >
+      <option value="random">Random</option>
+      <option v-for="mode in modes" :value="mode" :key="mode">
+        {{ getNameLabel(mode) }}
+      </option>
+    </select>
+  </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.select-wrapper {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 2rem;
+  width: 100%;
+}
+
+select {
+  margin-left: 1rem;
+}
+</style>
