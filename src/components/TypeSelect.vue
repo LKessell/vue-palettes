@@ -48,6 +48,8 @@ function getNameLabel(name: string) {
 }
 
 select {
+  border: none;
+  border-radius: 0.5rem;
   margin-left: 1rem;
   font-weight: bold;
   padding: 1rem;
