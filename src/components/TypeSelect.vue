@@ -40,6 +40,7 @@ function getNameLabel(name: string) {
 
 <style scoped>
 .select-wrapper {
+  align-items: center;
   display: flex;
   justify-content: center;
   padding-bottom: 2rem;
@@ -48,5 +49,8 @@ function getNameLabel(name: string) {
 
 select {
   margin-left: 1rem;
+  font-weight: bold;
+  padding: 1rem;
+  cursor: pointer;
 }
 </style>
