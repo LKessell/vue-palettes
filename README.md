@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-  <img alt="Application demo gif" src="https://user-images.githubusercontent.com/77205456/224162787-6d84c304-4d8b-4864-a245-8ad9d6bb3662.gif">
+  <img alt="Application demo gif" src="https://user-images.githubusercontent.com/77205456/224773533-2729a26d-0732-497a-8cde-e0713e417bc8.gif">
 </p>
 
 ## Project Overview
@@ -54,7 +54,7 @@ There is still a lot of room for continued exploration in this project, and many
 - ~~Save palettes in local storage to persist across refreshes~~ Complete!
 - Allow users to name palettes
 - Allow users to click on a saved palette to bring it up in the main palette view
-- Allow users to choose the type of palette generated (monochromatic, triad, etc.)
+- ~~Allow users to choose the type of palette generated (monochromatic, triad, etc.)~~ Complete!
 - Add functionality to share palettes
 
 ## Attributions
