@@ -196,6 +196,9 @@ ul {
 }
 
 @media (min-width: 1440px) {
+  .saved-section {
+    min-width: calc(12vw + 4rem);
+  }
   .toggle-open {
     right: calc(12vw + 3.5rem);
   }
