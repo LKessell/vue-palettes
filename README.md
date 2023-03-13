@@ -17,7 +17,7 @@
 ![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)
 ![Vercel](https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white)
 
-I created this project to explore the [Vue.js](https://vuejs.org/) framework and [TypeScript](https://www.typescriptlang.org/). Users can create a randomized palette of five colors, lock in colors that they like, and save or delete palettes.
+I created this project to explore the [Vue.js](https://vuejs.org/) framework and [TypeScript](https://www.typescriptlang.org/). Users can create a palette of five colors using various generation modes, as well as lock in colors that they like between generations. Palettes can also be saved or deleted as desired.
 
 ## Project Setup
 
