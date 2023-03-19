@@ -2,6 +2,7 @@
 import { onMounted, ref } from "vue";
 import MainSwatch from "./MainSwatch.vue";
 import TypeSelect from "./TypeSelect.vue";
+import { usePaletteStore } from "@/stores/palette";
 
 interface IColor {
   hex: {
@@ -9,14 +10,14 @@ interface IColor {
   };
 }
 
-const palette = ref<Array<{ isLocked: boolean; hex: string; id: string }>>([]);
+const palette = usePaletteStore();
 const paletteMode = ref("random");
 
 const emit = defineEmits(["savePalette"]);
 
 function handleSave() {
-  if (palette.value.length) {
-    const newPalette = [...palette.value];
+  if (palette.colors.length) {
+    const newPalette = [...palette.colors];
     newPalette.forEach((color) => (color.isLocked = false));
 
     emit("savePalette", newPalette);
@@ -74,7 +75,7 @@ function getRandomizedPalette() {
   fetchPalette(hex, mode).then((data) => {
     if (data.colors) {
       const colors = formatColorData(data);
-      updatePalette(colors);
+      palette.updatePalette(colors);
     }
   });
 }
@@ -84,23 +85,12 @@ function handleRandomizeClick(e: Event) {
   getRandomizedPalette();
 }
 
+// Should be a store action?
 function toggleLock(id: string) {
-  const index = palette.value.findIndex((color) => color.id === id);
-  const color = palette.value[index];
+  const index = palette.colors.findIndex((color) => color.id === id);
+  const color = palette.colors[index];
 
   color.isLocked = !color.isLocked;
-}
-
-function updatePalette(
-  fetchedColors: Array<{ isLocked: boolean; hex: string; id: string }>
-) {
-  if (!palette.value.length) {
-    palette.value = fetchedColors;
-  } else {
-    palette.value.forEach((color, index) => {
-      if (!color.isLocked) palette.value[index] = fetchedColors[index];
-    });
-  }
 }
 
 onMounted(() => {
@@ -112,7 +102,7 @@ onMounted(() => {
   <section class="main-palette">
     <div class="palette-wrapper">
       <MainSwatch
-        v-for="(color, index) in palette"
+        v-for="(color, index) in palette.colors"
         :color="color"
         :key="index + color.hex"
         @toggle-lock="toggleLock"
