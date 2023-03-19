@@ -17,12 +17,14 @@ function handleDelete(event: Event) {
 
 <template>
   <li class="saved-wrapper">
-    <div
-      v-for="color in palette"
-      class="saved-swatch"
-      :key="'swatch' + color.id"
-      :style="{ backgroundColor: '#' + color.hex }"
-    ></div>
+    <button class="swatches-wrapper">
+      <div
+        v-for="color in palette"
+        class="saved-swatch"
+        :key="'swatch' + color.id"
+        :style="{ backgroundColor: '#' + color.hex }"
+      ></div>
+    </button>
     <button
       :id="'dl-' + paletteId"
       class="delete-button"
@@ -40,6 +42,14 @@ function handleDelete(event: Event) {
   display: flex;
   align-items: center;
   padding: 1vw 0;
+}
+
+.swatches-wrapper {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  padding: 0;
 }
 .saved-swatch {
   width: 2vw;
