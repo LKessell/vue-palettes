@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import IconTrash from "./icons/Trash.vue";
+import { usePaletteStore } from "@/stores/palette";
+
 defineProps<{
   palette: Array<{ isLocked: boolean; hex: string; id: string }>;
   paletteId: string;
@@ -7,6 +9,8 @@ defineProps<{
 }>();
 
 const emit = defineEmits(["deletePalette"]);
+
+const mainPalette = usePaletteStore();
 
 function handleDelete(event: Event) {
   const button = event.currentTarget as HTMLButtonElement;
