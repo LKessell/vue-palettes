@@ -89,13 +89,13 @@ svg {
 
 @media (max-width: 1024px) {
   .saved-swatch {
-    width: 2.5vw;
-    height: 2.5vw;
+    width: 3vw;
+    height: 3vw;
   }
 
   svg {
-    width: 2.5vw;
-    height: 2.5vw;
+    width: 3vw;
+    height: 3vw;
   }
 }
 
