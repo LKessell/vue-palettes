@@ -17,7 +17,7 @@
 ![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)
 ![Vercel](https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white)
 
-I created this project to explore the [Vue.js](https://vuejs.org/) framework and [TypeScript](https://www.typescriptlang.org/). Users can create a palette of five colors using various generation modes, as well as lock in colors that they like between generations. Palettes can also be saved or deleted as desired.
+I created this project to explore the [Vue.js](https://vuejs.org/) framework and [TypeScript](https://www.typescriptlang.org/). Users can create a palette of five colors using various generation modes, as well as lock in colors that they like between generations. Palettes can also be saved for later viewing, or deleted if desired.
 
 ## Project Setup
 
@@ -49,11 +49,13 @@ I had some difficulty wrapping my mind around reactive state in Vue! Having most
 
 One feature that I really liked is the scoped styling option for components. This is a really handy feature that could be very useful for avoiding conflicts in larger applications. I enjoyed using CSS Modules during my apprenticeship for similar functionality, and it is nice to see a feature like this baked in!
 
+Vue provides several options for state management, but I decided to try out [Pinia](https://pinia.vuejs.org/) in this project. Setting up a store for the main palette was very straightforward, and I can see several opportunities to refactor other areas in the app. I struggled a bit using emits for actions like saving/deleting palettes, and adding a new Pinia store would make these actions much simpler!
+
 There is still a lot of room for continued exploration in this project, and many future additions to consider:
 
 - ~~Save palettes in local storage to persist across refreshes~~ Complete!
 - Allow users to name palettes
-- Allow users to click on a saved palette to bring it up in the main palette view
+- ~~Allow users to click on a saved palette to bring it up in the main palette view~~ Complete!
 - ~~Allow users to choose the type of palette generated (monochromatic, triad, etc.)~~ Complete!
 - Add functionality to share palettes
 
