@@ -2,7 +2,7 @@
 import IconTrash from "./icons/Trash.vue";
 import { usePaletteStore } from "@/stores/palette";
 
-defineProps<{
+const props = defineProps<{
   palette: Array<{ isLocked: boolean; hex: string; id: string }>;
   paletteId: string;
   tabbable: boolean;
@@ -17,11 +17,15 @@ function handleDelete(event: Event) {
   const id = button?.id.slice(3);
   emit("deletePalette", id);
 }
+
+function handleEnlarge() {
+  mainPalette.updatePalette(props.palette);
+}
 </script>
 
 <template>
   <li class="saved-wrapper">
-    <button class="swatches-wrapper">
+    <button class="swatches-wrapper" @click="handleEnlarge">
       <div
         v-for="color in palette"
         class="saved-swatch"
