@@ -20,12 +20,21 @@ function handleDelete(event: Event) {
 
 function handleEnlarge() {
   mainPalette.updatePalette(props.palette);
+
+  const firstToggle = document.querySelector(
+    ".lock-toggle"
+  ) as HTMLButtonElement;
+  firstToggle.focus();
 }
 </script>
 
 <template>
   <li class="saved-wrapper">
-    <button class="swatches-wrapper" @click="handleEnlarge">
+    <button
+      aria-label="View in main"
+      class="swatches-wrapper"
+      @click="handleEnlarge"
+    >
       <div
         v-for="color in palette"
         class="saved-swatch"
