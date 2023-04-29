@@ -12,7 +12,13 @@ interface IPaletteState {
 
 export const usePaletteStore = defineStore("palette", {
   state: (): IPaletteState => ({
-    colors: [],
+    colors: [
+      { isLocked: false, hex: "636363", id: "placeholder1" },
+      { isLocked: false, hex: "808080", id: "placeholder2" },
+      { isLocked: false, hex: "9e9e9e", id: "placeholder3" },
+      { isLocked: false, hex: "bdbdbd", id: "placeholder4" },
+      { isLocked: false, hex: "dedede", id: "placeholder5" },
+    ],
   }),
   actions: {
     updatePalette(newColors: IColor[]) {
