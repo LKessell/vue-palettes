@@ -94,6 +94,12 @@ function toggleLock(id: string) {
   color.isLocked = !color.isLocked;
 }
 
+function validateHex(input: string) {
+  const regex = /^#?(([0-9a-fA-F]{2}){3}|([0-9a-fA-F]){3})$/g;
+
+  return input.match(regex) ? true : false;
+}
+
 onMounted(() => {
   getRandomizedPalette();
 });
@@ -109,7 +115,12 @@ onMounted(() => {
         @toggle-lock="toggleLock"
       />
     </div>
-    <input class="hex-entry" v-model="seedHex" placeholder="#40E0D0" />
+    <input
+      class="hex-entry"
+      v-model="seedHex"
+      @blur="validateHex(seedHex)"
+      placeholder="#40E0D0"
+    />
     <TypeSelect v-model:mode="paletteMode" />
     <button class="button" @click="handleRandomizeClick">Randomize</button>
     <button class="button" @click="handleSave">Save Palette</button>
