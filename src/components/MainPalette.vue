@@ -109,7 +109,7 @@ onMounted(() => {
         @toggle-lock="toggleLock"
       />
     </div>
-    <input v-model="seedHex" placeholder="40E0D0" />
+    <input class="hex-entry" v-model="seedHex" placeholder="#40E0D0" />
     <TypeSelect v-model:mode="paletteMode" />
     <button class="button" @click="handleRandomizeClick">Randomize</button>
     <button class="button" @click="handleSave">Save Palette</button>
@@ -145,6 +145,15 @@ onMounted(() => {
   display: flex;
   justify-content: center;
   width: 100%;
+}
+
+.hex-entry {
+  background-color: rgb(233, 233, 237);
+  border: 4px solid #40e0d0;
+  border-radius: 2rem;
+  height: 2.5rem;
+  margin-bottom: 2rem;
+  text-align: center;
 }
 
 @media (max-width: 1024px) {
