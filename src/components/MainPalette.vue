@@ -12,6 +12,7 @@ interface IColor {
 
 const palette = usePaletteStore();
 const paletteMode = ref("random");
+const seedHex = ref("");
 
 const emit = defineEmits(["savePalette"]);
 
@@ -108,6 +109,7 @@ onMounted(() => {
         @toggle-lock="toggleLock"
       />
     </div>
+    <input v-model="seedHex" placeholder="40E0D0" />
     <TypeSelect v-model:mode="paletteMode" />
     <button class="button" @click="handleRandomizeClick">Randomize</button>
     <button class="button" @click="handleSave">Save Palette</button>
