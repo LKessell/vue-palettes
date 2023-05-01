@@ -12,10 +12,10 @@ interface IColor {
 
 const palette = usePaletteStore();
 const paletteMode = ref("random");
-const seedHex = ref("");
+const hexInput = ref("");
 const borderHex = computed(() => {
-  const isValid = validateHex(seedHex.value);
-  const capital = isValid ? seedHex.value.toUpperCase() : "000000";
+  const isValid = validateHex(hexInput.value);
+  const capital = isValid ? hexInput.value.toUpperCase() : "000000";
   const withHex = capital.startsWith("#") ? capital : `#${capital}`;
   return withHex;
 });
@@ -123,8 +123,8 @@ onMounted(() => {
     </div>
     <input
       class="hex-entry"
-      v-model="seedHex"
-      @blur="seedHex = borderHex"
+      v-model="hexInput"
+      @blur="hexInput = borderHex"
       placeholder="#000000"
       :style="{ border: `4px solid ${borderHex}` }"
     />
