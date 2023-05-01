@@ -106,6 +106,15 @@ function validateHex(input: string) {
   return input.match(regex) ? true : false;
 }
 
+function validateInput(input: string) {
+  if (!validateHex(hexInput.value)) {
+    hexInput.value = "";
+  } else {
+    const withHex = input.startsWith("#") ? input : `#${input}`;
+    hexInput.value = withHex.toUpperCase();
+  }
+}
+
 onMounted(() => {
   getRandomizedPalette();
 });
@@ -124,7 +133,7 @@ onMounted(() => {
     <input
       class="hex-entry"
       v-model="hexInput"
-      @blur="hexInput = borderHex"
+      @blur="validateInput(hexInput)"
       placeholder="#000000"
       :style="{ border: `4px solid ${borderHex}` }"
     />
