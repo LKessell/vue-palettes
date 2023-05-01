@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, ref } from "vue";
+import { computed, onMounted, ref } from "vue";
 import MainSwatch from "./MainSwatch.vue";
 import TypeSelect from "./TypeSelect.vue";
 import { usePaletteStore } from "@/stores/palette";
@@ -13,6 +13,12 @@ interface IColor {
 const palette = usePaletteStore();
 const paletteMode = ref("random");
 const seedHex = ref("");
+const borderHex = computed(() => {
+  const isValid = validateHex(seedHex.value);
+  const capital = isValid ? seedHex.value.toUpperCase() : "000000";
+  const withHex = capital.startsWith("#") ? capital : `#${capital}`;
+  return withHex;
+});
 
 const emit = defineEmits(["savePalette"]);
 
@@ -118,8 +124,9 @@ onMounted(() => {
     <input
       class="hex-entry"
       v-model="seedHex"
-      @blur="validateHex(seedHex)"
-      placeholder="#40E0D0"
+      @blur="seedHex = borderHex"
+      placeholder="#000000"
+      :style="{ border: `4px solid ${borderHex}` }"
     />
     <TypeSelect v-model:mode="paletteMode" />
     <button class="button" @click="handleRandomizeClick">Randomize</button>
@@ -160,11 +167,11 @@ onMounted(() => {
 
 .hex-entry {
   background-color: rgb(233, 233, 237);
-  border: 4px solid #40e0d0;
   border-radius: 2rem;
   height: 2.5rem;
   margin-bottom: 2rem;
   text-align: center;
+  transition: border 0.5s;
 }
 
 @media (max-width: 1024px) {
