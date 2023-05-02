@@ -89,7 +89,7 @@ function getNewPalette() {
   });
 }
 
-function handleRandomizeClick(e: Event) {
+function handleGenerateClick(e: Event) {
   e.preventDefault();
   getNewPalette();
 }
@@ -140,7 +140,7 @@ onMounted(() => {
       :style="{ border: `4px solid ${borderHex}` }"
     />
     <TypeSelect v-model:mode="paletteMode" />
-    <button class="button" @click="handleRandomizeClick">Randomize</button>
+    <button class="button" @click="handleGenerateClick">Generate</button>
     <button class="button" @click="handleSave">Save Palette</button>
   </section>
 </template>
