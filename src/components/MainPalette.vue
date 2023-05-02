@@ -74,8 +74,10 @@ function getRandomMode() {
   return modes[Math.floor(Math.random() * 8)];
 }
 
-function getRandomizedPalette() {
-  const hex = getRandomHex();
+function getNewPalette() {
+  const hex = validateHex(hexInput.value.substring(1))
+    ? hexInput.value.substring(1)
+    : getRandomHex();
   const mode =
     paletteMode.value === "random" ? getRandomMode() : paletteMode.value;
 
@@ -89,7 +91,7 @@ function getRandomizedPalette() {
 
 function handleRandomizeClick(e: Event) {
   e.preventDefault();
-  getRandomizedPalette();
+  getNewPalette();
 }
 
 // Should be a store action?
@@ -116,7 +118,7 @@ function validateInput(input: string) {
 }
 
 onMounted(() => {
-  getRandomizedPalette();
+  getNewPalette();
 });
 </script>
 
