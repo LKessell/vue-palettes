@@ -1,8 +1,10 @@
 <script setup lang="ts">
-import { computed, onMounted, ref } from "vue";
+import { onMounted, ref } from "vue";
 import MainSwatch from "./MainSwatch.vue";
+import HexInput from "./HexInput.vue";
 import TypeSelect from "./TypeSelect.vue";
 import { usePaletteStore } from "@/stores/palette";
+import { validateHex } from "@/utilities";
 
 interface IColor {
   hex: {
@@ -13,12 +15,6 @@ interface IColor {
 const palette = usePaletteStore();
 const paletteMode = ref("random");
 const hexInput = ref("");
-const borderHex = computed(() => {
-  const isValid = validateHex(hexInput.value);
-  const capital = isValid ? hexInput.value.toUpperCase() : "000000";
-  const withHex = capital.startsWith("#") ? capital : `#${capital}`;
-  return withHex;
-});
 
 const emit = defineEmits(["savePalette"]);
 
@@ -102,12 +98,6 @@ function toggleLock(id: string) {
   color.isLocked = !color.isLocked;
 }
 
-function validateHex(input: string) {
-  const regex = /^#?(([0-9a-fA-F]{2}){3}|([0-9a-fA-F]){3})$/g;
-
-  return input.match(regex) ? true : false;
-}
-
 function validateInput(input: string) {
   if (!validateHex(hexInput.value)) {
     hexInput.value = "";
@@ -132,13 +122,7 @@ onMounted(() => {
         @toggle-lock="toggleLock"
       />
     </div>
-    <input
-      class="hex-entry"
-      v-model="hexInput"
-      @blur="validateInput(hexInput)"
-      placeholder="#000000"
-      :style="{ border: `4px solid ${borderHex}` }"
-    />
+    <HexInput v-model="hexInput" />
     <TypeSelect v-model:mode="paletteMode" />
     <button class="button" @click="handleGenerateClick">Generate</button>
     <button class="button" @click="handleSave">Save Palette</button>
