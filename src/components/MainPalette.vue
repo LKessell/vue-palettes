@@ -160,15 +160,6 @@ onMounted(() => {
   width: 100%;
 }
 
-.hex-entry {
-  background-color: rgb(233, 233, 237);
-  border-radius: 2rem;
-  height: 2.5rem;
-  margin-bottom: 2rem;
-  text-align: center;
-  transition: border 0.5s;
-}
-
 @media (max-width: 1024px) {
   .palette-wrapper {
     flex-direction: column;
