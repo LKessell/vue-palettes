@@ -5,7 +5,7 @@ import { validateHex } from "@/utilities";
 const props = defineProps<{
   modelValue: string;
 }>();
-defineEmits(["update:modelValue"]);
+defineEmits(["update:modelValue", "changeFocus"]);
 
 const borderHex = computed(() => {
   const isValid = validateHex(props.modelValue);
@@ -16,10 +16,10 @@ const borderHex = computed(() => {
 </script>
 
 <template>
-  <!-- Add @blur event listener that emits validateInput? -->
   <input
     class="hex-entry"
     :value="modelValue"
+    @blur="$emit('changeFocus', borderHex)"
     @input="
       $emit('update:modelValue', ($event.target as HTMLInputElement).value)
     "
