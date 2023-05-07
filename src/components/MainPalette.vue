@@ -122,7 +122,7 @@ onMounted(() => {
         @toggle-lock="toggleLock"
       />
     </div>
-    <HexInput v-model="hexInput" />
+    <HexInput v-model="hexInput" @change-focus="validateInput" />
     <TypeSelect v-model:mode="paletteMode" />
     <button class="button" @click="handleGenerateClick">Generate</button>
     <button class="button" @click="handleSave">Save Palette</button>
