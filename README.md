@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-  <img alt="Application demo gif" src="https://user-images.githubusercontent.com/77205456/224773533-2729a26d-0732-497a-8cde-e0713e417bc8.gif">
+  <img alt="Application demo gif" src="https://user-images.githubusercontent.com/77205456/236968663-8d1c2de8-83cf-416e-bb64-9b8184ad639f.gif">
 </p>
 
 ## Project Overview
@@ -17,7 +17,7 @@
 ![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)
 ![Vercel](https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white)
 
-I created this project to explore the [Vue.js](https://vuejs.org/) framework and [TypeScript](https://www.typescriptlang.org/). Users can create a palette of five colors using various generation modes, as well as lock in colors that they like between generations. Palettes can also be saved for later viewing, or deleted if desired.
+I created this project to explore the [Vue.js](https://vuejs.org/) framework and [TypeScript](https://www.typescriptlang.org/). Users can create a palette of five colors by choosing from several types of generation modes. For further refinement, users can specify a seed color for a palette, as well as lock in colors that they like between generations. Palettes can be saved for later viewing, or deleted if desired.
 
 ## Project Setup
 
@@ -54,9 +54,9 @@ Vue provides several options for state management, but I decided to try out [Pin
 There is still a lot of room for continued exploration in this project, and many future additions to consider:
 
 - ~~Save palettes in local storage to persist across refreshes~~ Complete!
-- Allow users to name palettes
 - ~~Allow users to click on a saved palette to bring it up in the main palette view~~ Complete!
 - ~~Allow users to choose the type of palette generated (monochromatic, triad, etc.)~~ Complete!
+- Allow users to name palettes
 - Add functionality to share palettes
 
 ## Attributions

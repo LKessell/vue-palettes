@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import { onMounted, ref } from "vue";
 import MainSwatch from "./MainSwatch.vue";
+import HexInput from "./HexInput.vue";
 import TypeSelect from "./TypeSelect.vue";
 import { usePaletteStore } from "@/stores/palette";
+import { validateHex } from "@/utilities";
 
 interface IColor {
   hex: {
@@ -12,6 +14,7 @@ interface IColor {
 
 const palette = usePaletteStore();
 const paletteMode = ref("random");
+const hexInput = ref("");
 
 const emit = defineEmits(["savePalette"]);
 
@@ -67,8 +70,10 @@ function getRandomMode() {
   return modes[Math.floor(Math.random() * 8)];
 }
 
-function getRandomizedPalette() {
-  const hex = getRandomHex();
+function getNewPalette() {
+  const hex = validateHex(hexInput.value.substring(1))
+    ? hexInput.value.substring(1)
+    : getRandomHex();
   const mode =
     paletteMode.value === "random" ? getRandomMode() : paletteMode.value;
 
@@ -80,9 +85,9 @@ function getRandomizedPalette() {
   });
 }
 
-function handleRandomizeClick(e: Event) {
+function handleGenerateClick(e: Event) {
   e.preventDefault();
-  getRandomizedPalette();
+  getNewPalette();
 }
 
 // Should be a store action?
@@ -93,8 +98,17 @@ function toggleLock(id: string) {
   color.isLocked = !color.isLocked;
 }
 
+function validateInput(input: string) {
+  if (!validateHex(hexInput.value)) {
+    hexInput.value = "";
+  } else {
+    const withHex = input.startsWith("#") ? input : `#${input}`;
+    hexInput.value = withHex.toUpperCase();
+  }
+}
+
 onMounted(() => {
-  getRandomizedPalette();
+  getNewPalette();
 });
 </script>
 
@@ -108,8 +122,9 @@ onMounted(() => {
         @toggle-lock="toggleLock"
       />
     </div>
+    <HexInput v-model="hexInput" @change-focus="validateInput" />
     <TypeSelect v-model:mode="paletteMode" />
-    <button class="button" @click="handleRandomizeClick">Randomize</button>
+    <button class="button" @click="handleGenerateClick">Generate</button>
     <button class="button" @click="handleSave">Save Palette</button>
   </section>
 </template>
